@@ -8,7 +8,7 @@ var drag
 var time_to_kill
 
 var particles_resource : String
-var particles = null
+var particles : Particles2D = null
 
 var velocity : Vector2 = Vector2.ZERO
 
@@ -23,9 +23,7 @@ func _ready():
 	
 	particles = load(particles_resource).instance()
 	visuals.add_child(particles, true)
-	
-	#particles.emitting = true
-	
+			
 	velocity = direction * acceleration
 	
 	if(time_to_kill > 0):
@@ -43,7 +41,7 @@ func _physics_process(delta):
 	
 	#if(not get_node("CollisionShape2D").disabled):
 	position += velocity	
-	velocity *= drag	
+	velocity *= drag
 	
 	# manually set the visuals position
 	# because it is not a child
@@ -76,8 +74,6 @@ func kill_particles():
 	#print("killed spell master node")
 	
 
-func _on_Area2D_body_entered(body):
-	
+func _on_Area2D_body_entered(body):	
 	if(body.name != "Player"):
-		kill_spell()
-		
+		kill_spell()		

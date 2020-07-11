@@ -46,8 +46,8 @@ func _spawn_projectile_spell():
 	
 	# from the list of spells
 	# grab one and spawn with the apropriate type
-	#spells.shuffle()  # make actual random
-	var spell_resource : ProjectileSpell = spells[3]
+	spells.shuffle()  # make actual random
+	var spell_resource : ProjectileSpell = spells[0]
 	
 	# instanciate the number of required spells
 	var spells = []
