@@ -52,7 +52,7 @@ func _spawn_spell():
 	var s = projectile_spell.instance()
 	
 	# set the image
-	var sprite : Sprite = s.get_node("Area2D/Visuals/Sprite")
+	var sprite : Sprite = s.get_node("Visuals/Sprite")
 	sprite.texture = spell_resource.profile
 	
 	var direction : Vector2 = position - cursor.position

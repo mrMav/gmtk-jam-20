@@ -7,7 +7,7 @@
 radius = 14.3902
 
 [sub_resource type="ParticlesMaterial" id=1]
-lifetime_randomness = 0.64
+lifetime_randomness = 0.75
 emission_shape = 1
 emission_sphere_radius = 10.98
 flag_disable_z = true
@@ -19,11 +19,15 @@ initial_velocity_random = 0.67
 angular_velocity = 302.81
 angular_velocity_random = 1.0
 orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-scale = 2.03
+orbit_velocity_random = 0.35
+linear_accel = 0.5
+linear_accel_random = 0.17
+damping = 3.98
+damping_random = 0.71
+scale = 3.03
 scale_random = 1.0
-hue_variation = 0.75
-hue_variation_random = 0.88
+hue_variation = 1.0
+hue_variation_random = 1.0
 
 [node name="Spell" type="Node"]
 script = ExtResource( 2 )
@@ -35,14 +39,17 @@ script = ExtResource( 3 )
 position = Vector2( -0.298317, -2.08825 )
 shape = SubResource( 2 )
 
-[node name="Visuals" type="Node2D" parent="Area2D"]
+[node name="Visuals" type="Node2D" parent="."]
 
-[node name="Sprite" type="Sprite" parent="Area2D/Visuals"]
+[node name="Sprite" type="Sprite" parent="Visuals"]
 region_rect = Rect2( 66, 33.5481, 27, 28.4519 )
 
-[node name="Particles2D" type="Particles2D" parent="Area2D/Visuals"]
+[node name="Particles2D" type="Particles2D" parent="Visuals"]
 amount = 19
 randomness = 0.94
 local_coords = false
 process_material = SubResource( 1 )
+
+[node name="remove_timer" type="Timer" parent="."]
+wait_time = 1.5
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
