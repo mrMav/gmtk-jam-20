@@ -119,7 +119,7 @@ func _spawn_projectile_spell():
 		spell_container.add_child(spells[i], true)
 	
 func _on_HitPoints_die():	
-	print("die")	
+	get_tree().reload_current_scene()
 
 func _on_damage_area_entered(area):	
 	if(area.name == "enemy_damage_area"):
