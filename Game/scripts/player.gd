@@ -9,27 +9,18 @@ export(float) var drag
 export(float) var mouse_sensitivity = 0.01
 export(float) var controller_sensitivity = 4
 
+export(Array, Resource) var spells : Array
+
 var velocity : Vector2 = Vector2.ZERO
 onready var cursor = get_node(cursorPath)
 onready var spell_container = get_node(spellContainerPath)
 
-var spell = preload("res://scenes/spell.tscn")
+var projectile_spell = preload("res://scenes/spell.tscn")
 
 func _process(delta):	
 	
-	if(Input.is_action_pressed("action_1")):
-		#fire spell
-		
-		# give spell a speed and direction
-		var direction : Vector2 = position - cursor.position
-		var speed = 800
-		
-		var s = spell.instance()
-		s.speed = speed
-		s.direction = -direction.normalized()
-		s.position = position
-		
-		spell_container.add_child(s, true)
+	if(Input.is_action_just_pressed("action_1")):
+		_spawn_spell()
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -50,4 +41,29 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity)
 		
 	velocity *= drag
+	
+func _spawn_spell():
+	
+	# from the list of spells
+	# grab one and spawn with the apropriate type
+	spells.shuffle()  # make actual random
+	var spell_resource : ProjectileSpell = spells[0];
+	
+	var s = projectile_spell.instance()
+	
+	# set the image
+	var sprite : Sprite = s.get_node("Area2D/Visuals/Sprite")
+	sprite.texture = spell_resource.profile
+	
+	var direction : Vector2 = position - cursor.position
+	s.speed = spell_resource.velocity
+	s.direction = -direction.normalized()
+	s.position = position
+	
+	spell_container.add_child(s, true)
+	
+	
+	
+	
+	
 	
