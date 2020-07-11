@@ -2,13 +2,11 @@
 
 [sub_resource type="ParticlesMaterial" id=1]
 lifetime_randomness = 0.75
-emission_shape = 1
-emission_sphere_radius = 10.98
 flag_disable_z = true
 direction = Vector3( 1, 1, 0 )
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 35.23
+initial_velocity = 10.0
 initial_velocity_random = 0.67
 angular_velocity = 302.81
 angular_velocity_random = 1.0
@@ -20,12 +18,13 @@ damping = 3.98
 damping_random = 0.71
 scale = 3.03
 scale_random = 1.0
-hue_variation = 1.0
-hue_variation_random = 1.0
+color = Color( 0.996078, 0.00392157, 0.00392157, 1 )
+hue_variation = 0.17
+hue_variation_random = 0.58
 
-[node name="colorful" type="Particles2D"]
+[node name="fire" type="Particles2D"]
 amount = 100
-lifetime = 1.5
+lifetime = 3.0
 randomness = 0.94
 local_coords = false
 process_material = SubResource( 1 )

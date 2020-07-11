@@ -11,4 +11,7 @@ export(float) var time_to_kill = 0
 export(int) var number_of_projectiles = 1
 export(float) var spread = 0
 export(float) var rotation_speed = 2
+export(int) var trailing_number = 0
+export(float) var trailing_spacing = 0 
 export(Texture) var profile  = null
+export(String) var particles = null

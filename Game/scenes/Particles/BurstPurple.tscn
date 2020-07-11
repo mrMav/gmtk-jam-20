@@ -20,12 +20,14 @@ damping = 3.98
 damping_random = 0.71
 scale = 3.03
 scale_random = 1.0
-hue_variation = 1.0
-hue_variation_random = 1.0
+color = Color( 0.345098, 0.0823529, 0.380392, 1 )
 
-[node name="colorful" type="Particles2D"]
-amount = 100
-lifetime = 1.5
+[node name="purple_burst" type="Particles2D"]
+emitting = false
+amount = 40
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
 randomness = 0.94
 local_coords = false
 process_material = SubResource( 1 )

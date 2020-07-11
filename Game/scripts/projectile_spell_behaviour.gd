@@ -1,11 +1,14 @@
 extends Area2D
 
 var acceleration
-var direction
+var direction : Vector2 = Vector2.ZERO
 var damage
 var rotation_speed
 var drag
 var time_to_kill
+
+var particles_resource : String
+var particles = null
 
 var velocity : Vector2 = Vector2.ZERO
 
@@ -18,6 +21,9 @@ onready var particle_rem_timer = get_node("../particle_remove_timer")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
+	particles = load(particles_resource).instance()
+	visuals.add_child(particles, true)
+		
 	velocity = direction * acceleration
 	
 	if(time_to_kill > 0):
@@ -49,24 +55,24 @@ func _physics_process(delta):
 			kill_spell()
 	
 	# check for particle death
-	if(get_node("CollisionShape2D").disabled):
-		if(particle_rem_timer.time_left == 0):		
+	if(spell_killed):
+		if(particle_rem_timer.time_left == 0):
 			kill_particles()
 	
 
 func kill_spell():
 	if(not spell_killed):
-		get_node("CollisionShape2D").disabled = true
-		visuals.get_node("Sprite").queue_free()
-		visuals.get_node("Particles2D").emitting = false
-		particle_rem_timer.start(visuals.get_node("Particles2D").lifetime)
+		get_node("CollisionShape2D").call_deferred("disabled", true)
+		visuals.get_node("Sprite").queue_free()		
+		particles.get_node("./").emitting = false
+		particle_rem_timer.start(particles.lifetime)
 		spell_killed = true
-		print("killed spell")
+		#print("killed spell")
 
 func kill_particles():
 	get_node("../").queue_free()
+	#print("killed spell master node")
 	
-	print("killed spell master node")
 
 func _on_Area2D_body_entered(body):
 	

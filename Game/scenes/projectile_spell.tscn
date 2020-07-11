@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/projectile_spell_behaviour.gd" type="Script" id=3]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=3]
 radius = 14.3902
 
 [sub_resource type="ParticlesMaterial" id=2]
@@ -35,7 +35,7 @@ script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spell_body"]
 position = Vector2( -0.298317, -2.08825 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="Visuals" type="Node2D" parent="."]
 
@@ -43,6 +43,7 @@ shape = SubResource( 1 )
 region_rect = Rect2( 66, 33.5481, 27, 28.4519 )
 
 [node name="Particles2D" type="Particles2D" parent="Visuals"]
+visible = false
 amount = 19
 randomness = 0.94
 local_coords = false

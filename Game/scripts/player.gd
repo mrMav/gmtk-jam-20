@@ -56,17 +56,22 @@ func _spawn_projectile_spell():
 		# create the instance
 		spells.push_back(projectile_spell.instance())
 		
+		
 		# set the properties
 		# set the image
+		var visuals : Node2D = spells[i].get_node("Visuals")
 		var sprite : Sprite = spells[i].get_node("Visuals/Sprite")
 		sprite.texture = spell_resource.profile
 		
 		var body = spells[i].get_node("spell_body")
+		body.particles_resource = spell_resource.particles
 		
 		# set the direction (take into account spread)
 		var direction : Vector2 = -(position - cursor.position)
 		var half_n_projectiles = spell_resource.number_of_projectiles / 2.0 - 0.5
-		direction = direction.rotated(deg2rad((spell_resource.spread * i)-(half_n_projectiles * spell_resource.spread)))
+		var angle = deg2rad((spell_resource.spread * i)-(half_n_projectiles * spell_resource.spread))
+		visuals.rotation = deg2rad(spell_resource.spread * i) + atan2(direction.y, direction.x)
+		direction = direction.rotated(angle)
 		body.direction = direction.normalized()
 		
 		# set position to the current player position

@@ -5,20 +5,20 @@
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
-region = Rect2( 136, 41, 18, 13 )
+region = Rect2( 160, 32, 23, 23 )
 
 [resource]
 script = ExtResource( 1 )
-name = "Rocky Stuff"
-description = "Blast your enemies with rocks"
-initiative = 2
-damage = 10
-acceleration = 14
-drag = 1.0
-time_to_kill = 0.0
+name = "Magic Sweep"
+description = "Sweep away the ones closest to you. Sad though."
+initiative = 8
+damage = 6
+acceleration = 10
+drag = 0.7
+time_to_kill = 0.8
 number_of_projectiles = 4
-spread = 45.0
-rotation_speed = 2.0
+spread = 90.0
+rotation_speed = 0.0
 trailing_number = 0
 trailing_spacing = 0.0
 profile = SubResource( 1 )
