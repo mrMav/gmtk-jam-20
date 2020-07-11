@@ -1,12 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scripts/spell.gd" type="Script" id=2]
-[ext_resource path="res://scripts/spell_movement.gd" type="Script" id=3]
+[ext_resource path="res://scripts/projectile_spell_behaviour.gd" type="Script" id=3]
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=1]
 radius = 14.3902
 
-[sub_resource type="ParticlesMaterial" id=1]
+[sub_resource type="ParticlesMaterial" id=2]
 lifetime_randomness = 0.75
 emission_shape = 1
 emission_sphere_radius = 10.98
@@ -30,14 +29,13 @@ hue_variation = 1.0
 hue_variation_random = 1.0
 
 [node name="Spell" type="Node"]
-script = ExtResource( 2 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="spell_body" type="Area2D" parent="."]
 script = ExtResource( 3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spell_body"]
 position = Vector2( -0.298317, -2.08825 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Visuals" type="Node2D" parent="."]
 
@@ -48,8 +46,12 @@ region_rect = Rect2( 66, 33.5481, 27, 28.4519 )
 amount = 19
 randomness = 0.94
 local_coords = false
-process_material = SubResource( 1 )
+process_material = SubResource( 2 )
 
-[node name="remove_timer" type="Timer" parent="."]
+[node name="particle_remove_timer" type="Timer" parent="."]
 wait_time = 1.5
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
+one_shot = true
+
+[node name="spell_remove_timer" type="Timer" parent="."]
+one_shot = true
+[connection signal="body_entered" from="spell_body" to="spell_body" method="_on_Area2D_body_entered"]
