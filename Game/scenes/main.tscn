@@ -20,8 +20,8 @@ position = Vector2( 432, 448 )
 collision_layer = 1
 cursorPath = NodePath("../Cursor")
 spellContainerPath = NodePath("../Spell_Container")
-acceleration = 2000.0
-max_speed = 1200.0
+acceleration = 1000.0
+max_speed = 600.0
 drag = 0.8
 spells = [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 9 ) ]
 
