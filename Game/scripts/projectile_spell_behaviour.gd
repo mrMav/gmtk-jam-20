@@ -23,7 +23,9 @@ func _ready():
 	
 	particles = load(particles_resource).instance()
 	visuals.add_child(particles, true)
-		
+	
+	#particles.emitting = true
+	
 	velocity = direction * acceleration
 	
 	if(time_to_kill > 0):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/world_map.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://spells/FireBall.tres" type="Resource" id=6]
 [ext_resource path="res://spells/EarthSpell.tres" type="Resource" id=7]
 [ext_resource path="res://spells/AreaSweep.tres" type="Resource" id=8]
+[ext_resource path="res://spells/Air.tres" type="Resource" id=9]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 3 )
@@ -22,7 +23,7 @@ spellContainerPath = NodePath("../Spell_Container")
 acceleration = 2000.0
 max_speed = 1200.0
 drag = 0.8
-spells = [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 8 ) ]
+spells = [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 9 ) ]
 
 [node name="Cursor" parent="." instance=ExtResource( 4 )]
 

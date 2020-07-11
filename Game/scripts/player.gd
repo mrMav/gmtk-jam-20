@@ -26,7 +26,7 @@ func _process(delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 		
-	look_at(cursor.position)
+	#look_at(cursor.position)
 	
 	var h_move = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	var v_move = Input.get_action_strength("move_down")   - Input.get_action_strength("move_up")
@@ -46,8 +46,8 @@ func _spawn_projectile_spell():
 	
 	# from the list of spells
 	# grab one and spawn with the apropriate type
-	spells.shuffle()  # make actual random
-	var spell_resource : ProjectileSpell = spells[0]
+	#spells.shuffle()  # make actual random
+	var spell_resource : ProjectileSpell = spells[3]
 	
 	# instanciate the number of required spells
 	var spells = []

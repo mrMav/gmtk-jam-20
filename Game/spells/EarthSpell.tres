@@ -21,5 +21,7 @@ spread = 45.0
 rotation_speed = 2.0
 trailing_number = 0
 trailing_spacing = 0.0
+set_fire = false
+knock_back = 0.0
 profile = SubResource( 1 )
 particles = "res://scenes/Particles/ColorfulTrail.tscn"
