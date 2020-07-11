@@ -33,6 +33,13 @@ func _physics_process(delta):
 	wand.look_at(cursor.position)
 	wand.rotation += deg2rad(135)
 	
+	var diff_cursor_wand = cursor.position - wand.global_position
+		
+	if(diff_cursor_wand.y > 0):
+		wand.z_index = 1
+	else:
+		wand.z_index = 0
+	
 	
 	var diff_cursor = cursor.position - position
 	

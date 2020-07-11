@@ -75,7 +75,12 @@ smoothing_enabled = true
 smoothing_speed = 8.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+<<<<<<< Updated upstream
 frames = SubResource( 12 )
+=======
+z_index = 1
+frames = SubResource( 13 )
+>>>>>>> Stashed changes
 animation = "idle"
 frame = 2
 playing = true
@@ -88,6 +93,10 @@ position = Vector2( -0.231995, 5.76191 )
 shape = SubResource( 13 )
 
 [node name="Wand" type="Sprite" parent="."]
+<<<<<<< Updated upstream
 position = Vector2( -3.842, 2.78406 )
+=======
+z_index = 1
+>>>>>>> Stashed changes
 texture = ExtResource( 1 )
 offset = Vector2( -4, -4 )
