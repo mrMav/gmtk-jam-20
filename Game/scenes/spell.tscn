@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://spritesheet/placeholder.png" type="Texture" id=1]
+[ext_resource path="res://scripts/spell.gd" type="Script" id=2]
+[ext_resource path="res://scripts/spell_movement.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 14.3902
+
+[sub_resource type="ParticlesMaterial" id=1]
+lifetime_randomness = 0.64
+emission_shape = 1
+emission_sphere_radius = 10.98
+flag_disable_z = true
+direction = Vector3( 1, 1, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 35.23
+initial_velocity_random = 0.67
+angular_velocity = 302.81
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 2.03
+scale_random = 1.0
+hue_variation = 0.75
+hue_variation_random = 0.88
+
+[node name="Spell" type="Node"]
+script = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -0.298317, -2.08825 )
+shape = SubResource( 2 )
+
+[node name="Visuals" type="Node2D" parent="Area2D"]
+
+[node name="Sprite" type="Sprite" parent="Area2D/Visuals"]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 66, 33.5481, 27, 28.4519 )
+
+[node name="Particles2D" type="Particles2D" parent="Area2D/Visuals"]
+amount = 19
+randomness = 0.94
+local_coords = false
+process_material = SubResource( 1 )
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
