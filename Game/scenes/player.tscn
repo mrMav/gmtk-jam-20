@@ -62,7 +62,7 @@ smoothing_speed = 10.0
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 10 )
 animation = "run"
-frame = 5
+frame = 2
 playing = true
 __meta__ = {
 "_edit_lock_": true
