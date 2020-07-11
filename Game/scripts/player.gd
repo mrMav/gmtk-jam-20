@@ -14,6 +14,7 @@ export(Array, Resource) var spells : Array
 var velocity : Vector2 = Vector2.ZERO
 onready var cursor = get_node(cursorPath)
 onready var spell_container = get_node(spellContainerPath)
+onready var animation = get_node("AnimatedSprite")
 
 var projectile_spell = preload("res://scenes/projectile_spell.tscn")
 
@@ -28,6 +29,8 @@ func _physics_process(delta):
 		
 	#look_at(cursor.position)
 	
+	var diff_cursor = cursor.position-position
+	
 	var h_move = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	var v_move = Input.get_action_strength("move_down")   - Input.get_action_strength("move_up")
 	
@@ -38,6 +41,16 @@ func _physics_process(delta):
 	if(velocity.length() > max_speed):
 		velocity = velocity.normalized() * max_speed
 	
+	if(diff_cursor.x > 0):
+		animation.flip_h = false
+	else:
+		animation.flip_h = true
+	
+	if(dir.length() > 0):
+		animation.play("run")
+	else:
+		animation.play("idle")
+		
 	velocity = move_and_slide(velocity)
 		
 	velocity *= drag
