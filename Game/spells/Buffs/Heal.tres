@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://spells/data/BuffSpell.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = "Heal"
+description = "Heals a small amount"
+time_out = 2.0
+interval_of_effects = 0.5
+initiative = 0
+heal_ammount = 10
+damage_ammount = 5
+poison_ammount = 1
+speed_increase_ammount = -20
+paralyze = true

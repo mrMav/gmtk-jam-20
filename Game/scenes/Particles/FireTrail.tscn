@@ -5,7 +5,7 @@ lifetime_randomness = 0.75
 flag_disable_z = true
 direction = Vector3( 1, 1, 0 )
 spread = 180.0
-gravity = Vector3( 0, 0, 0 )
+gravity = Vector3( 0, -10, 0 )
 initial_velocity = 10.0
 initial_velocity_random = 0.67
 angular_velocity = 302.81
@@ -23,8 +23,9 @@ hue_variation = 0.17
 hue_variation_random = 0.58
 
 [node name="fire" type="Particles2D"]
+position = Vector2( 0, -0.10511 )
 amount = 100
-lifetime = 3.0
+lifetime = 0.5
 randomness = 0.94
 local_coords = false
 process_material = SubResource( 1 )

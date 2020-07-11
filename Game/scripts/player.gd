@@ -16,6 +16,7 @@ onready var cursor = get_node(cursorPath)
 onready var spell_container = get_node(spellContainerPath)
 onready var animation = get_node("AnimatedSprite")
 onready var wand = $Wand
+onready var hitpoints = $HitPoints
 
 var projectile_spell = preload("res://scenes/projectile_spell.tscn")
 
@@ -66,7 +67,7 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity)
 		
 	velocity *= drag
-	
+		
 func _spawn_projectile_spell():
 	
 	# from the list of spells
@@ -117,24 +118,10 @@ func _spawn_projectile_spell():
 		
 		spell_container.add_child(spells[i], true)
 	
-#	var s = projectile_spell.instance()
-	
-	
-#	var spell_body = s.get_node("spell_body")
-	
-	# set all the projectile variables from created resource	
-#	spell_body.speed = spell_resource.velocity
-#	spell_body.direction = -direction.normalized()
-#	spell_body.position = position
-#	spell_body.damage = spell_resource.damage
-#	spell_body.number_of_projectiles = spell_resource.number_of_projectiles
-#	spell_body.spread = spell_resource.spread
-#	spell_body.rotation_speed = spell_resource.rotation_speed
-	
-#	spell_container.add_child(s, true)
-	
-	
-	
-	
-	
-	
+func _on_HitPoints_die():	
+	print("die")	
+
+func _on_damage_area_entered(area):	
+	if(area.name == "enemy_damage_area"):
+		hitpoints._damage(area.get_parent().damage)
+		print(str("damaged player by ", area.get_parent().damage))

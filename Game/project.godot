@@ -10,11 +10,17 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Resource",
+"class": "BuffSpell",
+"language": "GDScript",
+"path": "res://spells/data/BuffSpell.gd"
+}, {
+"base": "Resource",
 "class": "ProjectileSpell",
 "language": "GDScript",
 "path": "res://spells/data/ProjectileSpell.gd"
 } ]
 _global_script_class_icons={
+"BuffSpell": "",
 "ProjectileSpell": ""
 }
 

@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+
+export(int) var damage = 2
 export(NodePath) var player_target = null
 onready var animation = get_node("AnimatedSprite")
 
@@ -10,7 +12,6 @@ const detect_dist = 16*15;
 const drag = 0.98
 
 var velocity : Vector2 = Vector2.ZERO
-
 
 func _ready():
 	target = get_node(player_target)
