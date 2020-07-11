@@ -15,6 +15,7 @@ var velocity : Vector2 = Vector2.ZERO
 onready var cursor = get_node(cursorPath)
 onready var spell_container = get_node(spellContainerPath)
 onready var animation = get_node("AnimatedSprite")
+onready var wand = $Wand
 
 var projectile_spell = preload("res://scenes/projectile_spell.tscn")
 
@@ -29,12 +30,16 @@ func _physics_process(delta):
 		
 	#look_at(cursor.position)
 	
-	var diff_cursor = cursor.position-position
+	wand.look_at(cursor.position)
+	wand.rotation += deg2rad(135)
+	
+	
+	var diff_cursor = cursor.position - position
 	
 	var h_move = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	var v_move = Input.get_action_strength("move_down")   - Input.get_action_strength("move_up")
 	
-	var dir = Vector2(h_move, v_move) * acceleration * delta;
+	var dir = Vector2(h_move, v_move).normalized() * acceleration * delta;
 		
 	velocity += dir
 	

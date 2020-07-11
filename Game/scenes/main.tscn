@@ -9,7 +9,7 @@
 [ext_resource path="res://spells/EarthSpell.tres" type="Resource" id=7]
 [ext_resource path="res://spells/AreaSweep.tres" type="Resource" id=8]
 [ext_resource path="res://spells/Air.tres" type="Resource" id=9]
-[ext_resource path="res://scenes/EnemyFollow.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/player_ui.tscn" type="PackedScene" id=10]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 3 )
@@ -17,7 +17,7 @@ script = ExtResource( 3 )
 [node name="world_map" parent="." instance=ExtResource( 1 )]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 432, 448 )
+position = Vector2( 233.726, 211.683 )
 collision_layer = 1
 cursorPath = NodePath("../Cursor")
 spellContainerPath = NodePath("../Spell_Container")
@@ -30,6 +30,4 @@ spells = [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 8 
 
 [node name="Spell_Container" type="Node" parent="."]
 
-[node name="EnemyFollow" parent="." instance=ExtResource( 10 )]
-position = Vector2( 208, 202 )
-player_target = NodePath("../Player")
+[node name="player_ui" parent="." instance=ExtResource( 10 )]
