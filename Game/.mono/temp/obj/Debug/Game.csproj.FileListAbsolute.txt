@@ -1,0 +1,6 @@
+C:\Users\jorge\projects\gmtk-jam-20\Game\.mono\temp\bin\Debug\Game.dll
+C:\Users\jorge\projects\gmtk-jam-20\Game\.mono\temp\bin\Debug\Game.pdb
+C:\Users\jorge\projects\gmtk-jam-20\Game\.mono\temp\obj\Debug\Game.csprojAssemblyReference.cache
+C:\Users\jorge\projects\gmtk-jam-20\Game\.mono\temp\obj\Debug\Game.csproj.CoreCompileInputs.cache
+C:\Users\jorge\projects\gmtk-jam-20\Game\.mono\temp\obj\Debug\Game.dll
+C:\Users\jorge\projects\gmtk-jam-20\Game\.mono\temp\obj\Debug\Game.pdb

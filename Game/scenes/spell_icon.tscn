@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/spell_icon.gd" type="Script" id=1]
+[ext_resource path="res://font/font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://spritesheet/selector.png" type="Texture" id=3]
+
+[node name="BufflIcon" type="TextureRect"]
+anchor_top = 0.056
+anchor_bottom = 0.056
+margin_left = -21.1041
+margin_top = -7.952
+margin_right = -5.10411
+margin_bottom = 8.048
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -99.0
+margin_top = -6.0
+margin_right = -1.0
+margin_bottom = 8.0
+custom_fonts/font = ExtResource( 2 )
+text = "hint text"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cursor" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
