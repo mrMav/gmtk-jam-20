@@ -15,7 +15,7 @@
 [ext_resource path="res://spells/Buffs/Poison.tres" type="Resource" id=13]
 [ext_resource path="res://spells/Buffs/Lettuce.tres" type="Resource" id=14]
 [ext_resource path="res://scenes/buff_icon.tscn" type="PackedScene" id=15]
-[ext_resource path="res://scenes/spell_icon.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/buff_icon_bg.tscn" type="PackedScene" id=16]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 

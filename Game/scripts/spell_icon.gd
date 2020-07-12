@@ -2,14 +2,15 @@ extends TextureRect
 
 export(Resource) var spell
 
-onready var cursor = $Cursor
-onready var text   = $Label
+onready var spell_icon = $SpellIcon
+onready var cursor = $SpellIcon/Cursor
+onready var text   = $SpellIcon/Label
 
 var is_next : bool = false
 
 func _ready():
 	
-	texture = spell.profile
+	spell_icon.texture = spell.profile
 	cursor.texture = preload("res://spritesheet/selector.png")
 	text.text = spell.name
 	
