@@ -1,6 +1,8 @@
 extends KinematicBody2D
 
+var dead = false
 
+export(int) var hitpoints = 100
 export(int) var damage = 2
 export(NodePath) var player_target = null
 onready var animation = get_node("AnimatedSprite")
@@ -15,6 +17,7 @@ var velocity : Vector2 = Vector2.ZERO
 
 func _ready():
 	target = get_node(player_target)
+	$HitPoints.current_hitpoints = hitpoints
 
 func _physics_process(delta):
 	
@@ -37,3 +40,13 @@ func _physics_process(delta):
 		animation.flip_h = true
 	else:
 		animation.flip_h = false
+
+
+func _on_HitPoints_die():
+	if(not dead):
+		_die()
+
+func _die():
+	print(str("enemy ", name, " died"))	
+	dead = true
+	queue_free()

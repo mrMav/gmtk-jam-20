@@ -3,6 +3,7 @@ extends KinematicBody2D
 export(NodePath) var cursorPath
 export(NodePath) var spellContainerPath
 
+export(float) var health = 100
 export(float) var acceleration
 export(float) var max_speed
 export(float) var drag
@@ -19,6 +20,9 @@ onready var wand = $Wand
 onready var hitpoints = $HitPoints
 
 var projectile_spell = preload("res://scenes/projectile_spell.tscn")
+
+func _ready():
+	hitpoints.current_hitpoints = health
 
 func _process(delta):	
 	

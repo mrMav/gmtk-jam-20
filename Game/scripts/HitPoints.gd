@@ -5,14 +5,14 @@ signal die
 onready var pop_up_container = get_tree().root.get_node("World/Popup_Container")
 onready var popup = preload("res://scenes/TextPopup/TextPopup.tscn")
 
-export(int) var max_points = 10
-
-var current_hitpoints
+var max_points : int
+var current_hitpoints : int
 
 func _ready():
-	current_hitpoints = max_points	
+	current_hitpoints = max_points
 
 func _damage(amount : int):
+	
 	current_hitpoints -= amount
 	
 	var p = popup.instance()

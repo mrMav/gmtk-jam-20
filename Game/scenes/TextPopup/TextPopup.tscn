@@ -52,7 +52,6 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-center_text = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/fade-up = SubResource( 1 )
