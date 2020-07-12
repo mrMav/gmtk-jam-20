@@ -13,7 +13,11 @@ export(float) var controller_sensitivity = 4
 export(Array, Resource) var spells : Array
 export(Array, Resource) var buffs  : Array
 
+var rng = RandomNumberGenerator.new()
+
 var active_buffs : Array
+var next_spell_index : int = 0
+var next_buff_index : int = 0
 
 var velocity : Vector2 = Vector2.ZERO
 onready var cursor = get_node(cursorPath)
@@ -21,6 +25,8 @@ onready var spell_container = get_node(spellContainerPath)
 onready var animation = get_node("AnimatedSprite")
 onready var wand = $Wand
 onready var hitpoints = $HitPoints
+onready var spells_ui = get_node("../player_ui/player_ui/SpellIconContainer").get_children()
+onready var buffs_ui = get_node("../player_ui/player_ui/BuffsIconContainer").get_children()
 
 var projectile_spell = preload("res://scenes/projectile_spell.tscn")
 
@@ -59,6 +65,18 @@ func _process(delta):
 				hitpoints._damage(buff.poison_effect, "#0000ff")
 				
 			buff.next_effect = now + buff.interval_of_effects
+
+	# enable ui next spell
+	for j in range(spells_ui.size()):
+		spells_ui[j].is_next = false
+		if(spells[next_spell_index].name == spells_ui[j].spell.name):
+			spells_ui[j].is_next = true
+			
+	# enable ui next buffs
+	for j in range(buffs_ui.size()):
+		buffs_ui[j].is_next = false
+		if(buffs[next_buff_index].name == buffs_ui[j].spell.name):
+			buffs_ui[j].is_next = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -115,12 +133,10 @@ func _spawn_projectile_spell():
 	
 	# from the list of spells
 	# grab one and spawn with the apropriate type
-	spells.shuffle()  # make actual random
-	var spell_resource : ProjectileSpell = spells[0]
+	#spells.shuffle()  # make actual random	
+	var spell_resource : ProjectileSpell = spells[next_spell_index]
+	next_spell_index = rng.randi_range(0, spells.size() -1)
 	
-	if spell_resource.name == "Ocean Drop":
-		print("OOF")
-		
 	# instanciate the number of required spells
 	var spells = []
 	for i in range(spell_resource.number_of_projectiles):
@@ -170,8 +186,10 @@ func _spawn_projectile_spell():
 
 func _apply_buff():
 	
-	buffs.shuffle()
-	var buff_res = buffs[0]
+	#buffs.shuffle()
+	var buff_res = buffs[next_buff_index]
+	next_buff_index = rng.randi_range(0, buffs.size() -1)
+	
 	var buff : Buff = Buff.new()
 	
 	buff.name = buff_res.name
