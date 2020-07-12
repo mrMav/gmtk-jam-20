@@ -1,40 +1,18 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/world_map.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/main.gd" type="Script" id=3]
 [ext_resource path="res://scenes/cursor.tscn" type="PackedScene" id=4]
-[ext_resource path="res://spells/Projectiles/WaterBall.tres" type="Resource" id=5]
+[ext_resource path="res://spells/Projectiles/WaterSpell.tres" type="Resource" id=5]
 [ext_resource path="res://spells/Projectiles/FireBall.tres" type="Resource" id=6]
 [ext_resource path="res://spells/Projectiles/EarthSpell.tres" type="Resource" id=7]
 [ext_resource path="res://spells/Projectiles/AreaSweep.tres" type="Resource" id=8]
-[ext_resource path="res://spells/data/ProjectileSpell.gd" type="Script" id=9]
+[ext_resource path="res://spells/Projectiles/Air.tres" type="Resource" id=9]
 [ext_resource path="res://scenes/player_ui.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/EnemyFollow.tscn" type="PackedScene" id=11]
-[ext_resource path="res://spritesheet/placeholder.png" type="Texture" id=12]
-
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 12 )
-region = Rect2( 196, 32, 25, 30 )
-
-[sub_resource type="Resource" id=2]
-script = ExtResource( 9 )
-name = "Air Swirl"
-description = "Bend it like you mean it"
-initiative = 2
-damage = 3
-acceleration = 23
-drag = 0.99
-time_to_kill = 2.0
-number_of_projectiles = 6
-spread = 15.0
-rotation_speed = 15.0
-trailing_number = 0
-trailing_spacing = 0.0
-set_fire = false
-knock_back = 0.0
-profile = SubResource( 1 )
-particles = "res://scenes/Particles/AirTrail.tscn"
+[ext_resource path="res://spells/Projectiles/BeamSpell.tres" type="Resource" id=12]
+[ext_resource path="res://spells/Projectiles/ShockSpell.tres" type="Resource" id=13]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 3 )
@@ -57,7 +35,7 @@ spellContainerPath = NodePath("../Spell_Container")
 acceleration = 1000.0
 max_speed = 600.0
 drag = 0.8
-spells = [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 8 ), SubResource( 2 ) ]
+spells = [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 5 ), ExtResource( 12 ), ExtResource( 13 ) ]
 
 [node name="Spell_Container" type="Node" parent="."]
 

@@ -1,22 +1,22 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://spells/data/ProjectileSpell.gd" type="Script" id=1]
-[ext_resource path="res://spritesheet/placeholder.png" type="Texture" id=2]
+[ext_resource path="res://spritesheet/spellsSheet.png" type="Texture" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
-region = Rect2( 136, 41, 18, 13 )
+region = Rect2( 2, 36, 16, 16 )
 
 [resource]
 script = ExtResource( 1 )
 name = "Rocky Stuff"
 description = "Blast your enemies with rocks"
 initiative = 2
-damage = 10
-acceleration = 14
+damage = 12
+acceleration = 3
 drag = 1.0
-time_to_kill = 0.0
-number_of_projectiles = 4
+time_to_kill = 2.0
+number_of_projectiles = 1
 spread = 45.0
 rotation_speed = 2.0
 trailing_number = 0
@@ -24,4 +24,4 @@ trailing_spacing = 0.0
 set_fire = false
 knock_back = 0.0
 profile = SubResource( 1 )
-particles = "res://scenes/Particles/ColorfulTrail.tscn"
+particles = "res://scenes/Particles/RockTrail.tscn"
