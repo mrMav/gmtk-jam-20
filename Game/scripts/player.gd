@@ -11,6 +11,9 @@ export(float) var mouse_sensitivity = 0.01
 export(float) var controller_sensitivity = 4
 
 export(Array, Resource) var spells : Array
+export(Array, Resource) var buffs  : Array
+
+var active_buffs : Array
 
 var velocity : Vector2 = Vector2.ZERO
 onready var cursor = get_node(cursorPath)
@@ -29,6 +32,32 @@ func _process(delta):
 	if(Input.is_action_just_pressed("action_1")):
 		_spawn_projectile_spell()
 	
+	if(Input.is_action_just_pressed("action_2")):
+		_apply_buff()
+	
+	# remove outdated buffs
+	for i in range(active_buffs.size() - 1, -1, -1):
+		var now = OS.get_unix_time()
+		var buff = active_buffs[i]
+		if(buff.applied_at + buff.spell_time_out < now):
+			active_buffs.remove(i)
+			print(str("removed buff ", buff.name))
+	
+	# update buffs effects
+	for i in range(active_buffs.size()):
+		var now = OS.get_unix_time()
+		var buff = active_buffs[i]
+		if(buff.next_effect < now):
+			# apply
+			if(buff.health_effect > 0):
+				hitpoints._heal(buff.health_effect)
+			if(buff.damage_effect > 0):
+				hitpoints._damage(buff.damage_effect, "#ff0000")
+			if(buff.poison_effect > 0):
+				hitpoints._damage(buff.poison_effect, "#0000ff")
+				
+			buff.next_effect = now + buff.interval_of_effects
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -43,8 +72,7 @@ func _physics_process(delta):
 	if(diff_cursor_wand.y > 0):
 		wand.z_index = 1
 	else:
-		wand.z_index = 0
-	
+		wand.z_index = 0	
 	
 	var diff_cursor = cursor.position - position
 	
@@ -85,8 +113,7 @@ func _spawn_projectile_spell():
 		
 		# create the instance
 		spells.push_back(projectile_spell.instance())
-		
-		
+				
 		# set the properties
 		# set the image
 		var visuals : Node2D = spells[i].get_node("Visuals")
@@ -121,11 +148,93 @@ func _spawn_projectile_spell():
 		body.time_to_kill = spell_resource.time_to_kill
 		
 		spell_container.add_child(spells[i], true)
+
+func _apply_buff():
 	
+	buffs.shuffle()
+	var buff_res = buffs[0]
+	var buff : Buff = Buff.new()
+	
+	buff.name = buff_res.name
+	buff.description = buff_res.description
+	
+	buff.spell_time_out = buff_res.spell_time_out
+	buff.interval_of_effects = buff_res.interval_of_effects
+
+	buff.initiative = buff_res.initiative
+
+	buff.health_effect = buff_res.health_effect
+	buff.damage_effect = buff_res.damage_effect
+	buff.poison_effect = buff_res.poison_effect
+
+	buff.speed_debuff_ammount = buff_res.speed_debuff_ammount
+	buff.damage_debuff_ammount = buff_res.damage_debuff_ammount 
+
+	buff.paralyze = buff_res.paralyze
+
+	buff.profile = buff_res.profile
+	buff.particles = buff_res.particles	
+	
+	buff.applied_at = OS.get_unix_time()
+	buff.next_effect = 0
+	
+	active_buffs.push_back(buff)
+	
+	print(str("added buff ", buff.name))
+	
+	
+#export(String) var name = "some buff"
+#export(String) var description = "description"
+#
+#export(float) var spell_time_out = 2
+#export(float) var interval_of_effects = 0.5
+#
+#export(int) var initiative = 0
+#
+#export(int) var health_effect = 0
+#export(int) var damage_effect = 0
+#export(int) var poison_effect = 0
+#
+#export(float) var speed_debuff_ammount = 0
+#export(float) var damage_debuff_ammount = 0
+#
+#export(bool) var paralyze = false
+#
+#export(Texture) var profile = null
+#export(PackedScene) var particles = null
+	
+
+
 func _on_HitPoints_die():	
 	get_tree().reload_current_scene()
 
 func _on_damage_area_entered(area):	
 	if(area.name == "enemy_damage_area"):
-		hitpoints._damage(area.get_parent().damage)
+		hitpoints._damage(area.get_parent().damage, "#ff0000")
 		print(str("damaged player by ", area.get_parent().damage))
+
+class Buff:
+	
+	var name = "some buff"
+	var description = "description"
+
+	var spell_time_out = 2
+	var interval_of_effects = 0.5
+
+	var initiative = 0
+
+	var health_effect = 0
+	var damage_effect = 0
+	var poison_effect = 0
+
+	var speed_debuff_ammount = 0
+	var damage_debuff_ammount = 0
+
+	var paralyze = false
+
+	var profile = null
+	var particles = null
+	
+	
+	var applied_at = 0
+	var next_effect = 0

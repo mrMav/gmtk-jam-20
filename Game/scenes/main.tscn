@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/world_map.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
@@ -12,6 +12,9 @@
 [ext_resource path="res://scenes/player_ui.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/EnemyFollow.tscn" type="PackedScene" id=11]
 [ext_resource path="res://spritesheet/placeholder.png" type="Texture" id=12]
+[ext_resource path="res://spells/Buffs/Heal.tres" type="Resource" id=13]
+[ext_resource path="res://spells/Buffs/Damage.tres" type="Resource" id=14]
+[ext_resource path="res://spells/Buffs/Poison.tres" type="Resource" id=15]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 12 )
@@ -54,10 +57,12 @@ position = Vector2( 233.726, 211.683 )
 collision_layer = 1
 cursorPath = NodePath("../Cursor")
 spellContainerPath = NodePath("../Spell_Container")
+health = 5000.0
 acceleration = 1000.0
 max_speed = 600.0
 drag = 0.8
 spells = [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 8 ), SubResource( 2 ) ]
+buffs = [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ]
 
 [node name="Spell_Container" type="Node" parent="."]
 
