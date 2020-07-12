@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://font/font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scripts/new_game_menu.gd" type="Script" id=2]
+
+[node name="main" type="Node2D"]
+
+[node name="ui" type="Node" parent="."]
+
+[node name="new_game_menu" type="Panel" parent="ui"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ui/new_game_menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -37.5
+margin_top = -19.5
+margin_right = 37.5
+margin_bottom = 19.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="start_game" type="Button" parent="ui/new_game_menu/VBoxContainer"]
+margin_right = 75.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 1 )
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="help" type="Button" parent="ui/new_game_menu/VBoxContainer"]
+margin_top = 18.0
+margin_right = 75.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 1 )
+text = "Help"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="quit_game" type="Button" parent="ui/new_game_menu/VBoxContainer"]
+margin_top = 36.0
+margin_right = 75.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="ui/new_game_menu/VBoxContainer/start_game" to="ui/new_game_menu" method="_on_start_game_pressed"]
+[connection signal="pressed" from="ui/new_game_menu/VBoxContainer/help" to="ui/new_game_menu" method="_on_help_pressed"]
+[connection signal="pressed" from="ui/new_game_menu/VBoxContainer/quit_game" to="ui/new_game_menu" method="_on_quit_game_pressed"]
