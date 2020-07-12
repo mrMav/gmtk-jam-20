@@ -40,6 +40,8 @@ func _process(delta):
 		var now = OS.get_unix_time()
 		var buff = active_buffs[i]
 		if(buff.applied_at + buff.spell_time_out < now):
+			if(buff.particles_instance):
+				buff.particles_instance.queue_free()
 			active_buffs.remove(i)
 			print(str("removed buff ", buff.name))
 	
@@ -79,12 +81,21 @@ func _physics_process(delta):
 	var h_move = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	var v_move = Input.get_action_strength("move_down")   - Input.get_action_strength("move_up")
 	
-	var dir = Vector2(h_move, v_move).normalized() * acceleration * delta;
+	
+	var acc = acceleration	
+	for j in range(active_buffs.size()):
+		var buff = active_buffs[j]
+		if(buff.speed_debuff_ammount != 0):
+			acc *= buff.speed_debuff_ammount
+		if(buff.paralyze):
+			acc *= Vector2.ZERO
+	var dir = Vector2(h_move, v_move).normalized() * acc * delta;
 		
 	velocity += dir
 	
 	if(velocity.length() > max_speed):
 		velocity = velocity.normalized() * max_speed
+	
 	
 	if(diff_cursor.x > 0):
 		animation.flip_h = false
@@ -140,8 +151,13 @@ func _spawn_projectile_spell():
 		# set the self rotation of the spell
 		body.rotation_speed = spell_resource.rotation_speed
 		
-		# set damage
-		body.damage = spell_resource.damage
+		# set damage, but take into account debuffs
+		var total_damage = spell_resource.damage
+		for j in range(active_buffs.size()):
+			var buff = active_buffs[j]
+			if(buff.damage_debuff_ammount != 0):
+				total_damage *= buff.damage_debuff_ammount					
+		body.damage = total_damage
 				
 		body.drag = spell_resource.drag
 				
@@ -177,6 +193,35 @@ func _apply_buff():
 	
 	buff.applied_at = OS.get_unix_time()
 	buff.next_effect = 0
+	
+	print(buff.particles)
+	
+	if(buff.particles):		
+		buff.particles_instance = buff_res.particles.instance()
+		buff.particles_instance.position = Vector2.ZERO
+		add_child(buff.particles_instance, true)
+		buff.particles_instance.emitting = true
+	
+	
+	var notifications_offset = 0
+	var offset_ammount = -12
+	if(buff.paralyze):
+		hitpoints._notify("Paralyzed!", Color.yellow)
+	
+	if(buff.speed_debuff_ammount > 0 and buff.speed_debuff_ammount < 1):
+		hitpoints._notify(str(buff.speed_debuff_ammount * 100 - 100, "% slower!"), Color.blueviolet, notifications_offset)
+		notifications_offset += offset_ammount
+	if(buff.speed_debuff_ammount > 1):
+		hitpoints._notify(str(buff.speed_debuff_ammount * 100 - 100, "% faster!"), Color.blue, notifications_offset)
+		notifications_offset += offset_ammount
+	
+	if(buff.damage_debuff_ammount > 0 and buff.damage_debuff_ammount < 1):
+		hitpoints._notify(str(buff.damage_debuff_ammount * 100 - 100, "% less damage!"), Color.blueviolet, notifications_offset)
+		notifications_offset += offset_ammount
+	if(buff.damage_debuff_ammount > 1):
+		hitpoints._notify(str(buff.damage_debuff_ammount * 100 - 100, "% more damage!"), Color.orange, notifications_offset)
+		notifications_offset += offset_ammount
+		
 	
 	active_buffs.push_back(buff)
 	
@@ -234,7 +279,8 @@ class Buff:
 
 	var profile = null
 	var particles = null
-	
-	
+		
 	var applied_at = 0
 	var next_effect = 0
+
+	var particles_instance = null

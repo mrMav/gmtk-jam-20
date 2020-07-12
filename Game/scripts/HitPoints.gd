@@ -43,4 +43,15 @@ func _heal(amount : int):
 	p.position.y += rng.randf_range(-5, 5)
 	
 	pop_up_container.add_child(p, true)
+	
+func _notify(text : String, color : Color, offset : int = 0):
+		
+	var p = popup.instance()
+	p.color = color
+	p.text = text
+	p.position = get_parent().position
+	
+	p.position.y += offset
+	
+	pop_up_container.add_child(p, true)
 		

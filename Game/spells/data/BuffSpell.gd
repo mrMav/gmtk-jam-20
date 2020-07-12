@@ -13,8 +13,8 @@ export(int) var health_effect = 0
 export(int) var damage_effect = 0
 export(int) var poison_effect = 0
 
-export(float) var speed_debuff_ammount = 0
-export(float) var damage_debuff_ammount = 0
+export(float, 0, 2) var speed_debuff_ammount = 0
+export(float, 0, 2) var damage_debuff_ammount = 0
 
 export(bool) var paralyze = false
 
