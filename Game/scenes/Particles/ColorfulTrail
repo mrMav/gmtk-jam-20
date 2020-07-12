@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [sub_resource type="ParticlesMaterial" id=1]
-lifetime_randomness = 0.2
+lifetime_randomness = 0.75
+emission_shape = 1
+emission_sphere_radius = 10.98
 flag_disable_z = true
 direction = Vector3( 1, 1, 0 )
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 10.0
+initial_velocity = 35.23
 initial_velocity_random = 0.67
 angular_velocity = 302.81
 angular_velocity_random = 1.0
@@ -16,24 +18,19 @@ linear_accel = 0.5
 linear_accel_random = 0.17
 damping = 3.98
 damping_random = 0.71
-scale = 0.9
+scale = 3.03
 scale_random = 1.0
-color = Color( 0.666667, 0.670588, 0.67451, 1 )
-hue_variation = -0.07
-hue_variation_random = 0.71
-anim_offset = 1.0
-anim_offset_random = 1.0
+hue_variation = 1.0
+hue_variation_random = 1.0
 
-[sub_resource type="AtlasTexture" id=2]
-
-[node name="fire" type="Particles2D"]
-position = Vector2( -0.44545, 1.11362 )
-amount = 100
-lifetime = 3.0
-randomness = 0.94
+[node name="Particles2D" type="Particles2D"]
+amount = 250
+lifetime = 0.1
+speed_scale = 0.1
+explosiveness = 0.5
+randomness = 1.0
 local_coords = false
 process_material = SubResource( 1 )
-texture = SubResource( 2 )
 __meta__ = {
 "_editor_description_": ""
 }

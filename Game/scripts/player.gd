@@ -118,6 +118,9 @@ func _spawn_projectile_spell():
 	spells.shuffle()  # make actual random
 	var spell_resource : ProjectileSpell = spells[0]
 	
+	if spell_resource.name == "Ocean Drop":
+		print("OOF")
+		
 	# instanciate the number of required spells
 	var spells = []
 	for i in range(spell_resource.number_of_projectiles):

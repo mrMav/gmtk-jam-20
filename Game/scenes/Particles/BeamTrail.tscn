@@ -1,15 +1,12 @@
 [gd_scene load_steps=2 format=2]
 
 [sub_resource type="ParticlesMaterial" id=1]
-lifetime_randomness = 0.75
-emission_shape = 1
-emission_sphere_radius = 10.98
 flag_disable_z = true
 direction = Vector3( 1, 1, 0 )
-spread = 180.0
+spread = 1.0
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 35.23
-initial_velocity_random = 0.67
+initial_velocity = 0.3
+initial_velocity_random = 0.29
 angular_velocity = 302.81
 angular_velocity_random = 1.0
 orbit_velocity = 0.0
@@ -18,15 +15,15 @@ linear_accel = 0.5
 linear_accel_random = 0.17
 damping = 3.98
 damping_random = 0.71
-scale = 3.03
+scale = 1.9
 scale_random = 1.0
-hue_variation = 1.0
-hue_variation_random = 1.0
+color = Color( 1, 0, 0, 1 )
+hue_variation = 0.04
 
-[node name="colorful" type="Particles2D"]
-amount = 100
-lifetime = 1.5
-randomness = 0.94
+[node name="Beam" type="Particles2D"]
+position = Vector2( -0.374123, -0.0495892 )
+amount = 500
+lifetime = 0.5
 local_coords = false
 process_material = SubResource( 1 )
 __meta__ = {

@@ -5,23 +5,23 @@
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 16, 16 )
+region = Rect2( 20, 86, 12, 13 )
 
 [resource]
 script = ExtResource( 1 )
-name = "Mighty Fire Ball"
-description = "The hell on Earth unleashed"
-initiative = 2
-damage = 8
-acceleration = 10
-drag = 0.85
-time_to_kill = 1.5
-number_of_projectiles = 2
-spread = 22.0
-rotation_speed = 15.0
+name = "Beam"
+description = "Beam them, like a bean"
+initiative = 1
+damage = 15
+acceleration = 6
+drag = 1.0
+time_to_kill = 2.0
+number_of_projectiles = 1
+spread = 2.0
+rotation_speed = 0.0
 trailing_number = 0
 trailing_spacing = 0.0
 set_fire = false
 knock_back = 0.0
 profile = SubResource( 1 )
-particles = "res://scenes/Particles/FireTrail.tscn"
+particles = "res://scenes/Particles/BeamTrail.tscn"
