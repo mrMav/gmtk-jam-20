@@ -10,5 +10,5 @@ func _process(delta):
 	
 	# exit game
 	if(Input.get_action_strength("ui_cancel")):
-		get_tree().quit()
+		get_tree().change_scene("res://scenes/main_menu.tscn")
 	

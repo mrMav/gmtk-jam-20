@@ -1,10 +1,8 @@
-
 [gd_resource type="Resource" load_steps=5 format=2]
 
 [ext_resource path="res://spells/data/BuffSpell.gd" type="Script" id=1]
 [ext_resource path="res://spritesheet/spellsSheet.png" type="Texture" id=2]
 [ext_resource path="res://scenes/Particles/Buffs/LettuceParticle.tscn" type="PackedScene" id=3]
-
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -24,5 +22,4 @@ speed_debuff_ammount = 1.3
 damage_debuff_ammount = 0.2
 paralyze = false
 profile = SubResource( 1 )
-
 particles = ExtResource( 3 )

@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://font/font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scenes/help.gd" type="Script" id=2]
+
+[node name="main" type="Node2D"]
+
+[node name="ui" type="Node" parent="."]
+
+[node name="new_game_menu" type="Panel" parent="ui"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ui/new_game_menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -121.334
+margin_top = -64.6731
+margin_right = 120.666
+margin_bottom = 64.3269
+custom_fonts/font = ExtResource( 1 )
+text = "Help Rob clean the library from the spooky monsters. There is only one issue: Your wand is not the sharpest.
+
+Use your left mouse button to cast spells.
+Use your right mouse button to apply buffs (or a debuff).
+
+All code and assets were created during these 48 hours.
+Game design & Art: Luís Torres
+Developer: mrmav
+Made in Godot 3.2.2
+
+(Esc to go back)"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
