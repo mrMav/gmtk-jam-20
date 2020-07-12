@@ -64,3 +64,5 @@ spells = [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 8 
 [node name="player_ui" parent="." instance=ExtResource( 10 )]
 
 [node name="Cursor" parent="." instance=ExtResource( 4 )]
+
+[node name="Popup_Container" type="Node" parent="."]

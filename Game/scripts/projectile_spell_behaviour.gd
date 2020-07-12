@@ -17,6 +17,7 @@ var spell_killed = false
 onready var visuals = get_node("../Visuals")
 onready var spell_rem_timer = get_node("../spell_remove_timer")
 onready var particle_rem_timer = get_node("../particle_remove_timer")
+onready var collision_poligon = $CollisionShape2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -62,7 +63,7 @@ func _physics_process(delta):
 
 func kill_spell():
 	if(not spell_killed):
-		get_node("CollisionShape2D").call_deferred("disabled", true)
+		collision_poligon.queue_free()
 		visuals.get_node("Sprite").queue_free()		
 		particles.get_node("./").emitting = false
 		particle_rem_timer.start(particles.lifetime)
@@ -74,6 +75,12 @@ func kill_particles():
 	#print("killed spell master node")
 	
 
+
 func _on_Area2D_body_entered(body):	
 	if(body.name != "Player"):
-		kill_spell()		
+		kill_spell()	
+
+func _on_spell_body_area_entered(area):
+	if(area.name == "enemy_damage_area"):
+		area.get_parent().get_node("./HitPoints")._damage(damage)
+		kill_spell()
