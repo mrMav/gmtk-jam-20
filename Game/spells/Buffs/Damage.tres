@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://spells/data/BuffSpell.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = "Damage"
+description = "Damages"
+spell_time_out = 1.0
+interval_of_effects = 1.0
+initiative = 0
+health_effect = 0
+damage_effect = 5
+poison_effect = 0
+speed_debuff_ammount = 0.0
+damage_debuff_ammount = 0.0
+paralyze = false

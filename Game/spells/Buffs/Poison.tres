@@ -1,18 +1,18 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://spells/data/BuffSpell.gd" type="Script" id=1]
-[ext_resource path="res://scenes/Particles/HealParticles.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Particles/PoisonParticles.tscn" type="PackedScene" id=2]
 
 [resource]
 script = ExtResource( 1 )
-name = "Heal"
-description = "Heals a small amount"
+name = "Poison"
+description = "Poisons"
 spell_time_out = 5.0
-interval_of_effects = 0.25
+interval_of_effects = 1.0
 initiative = 0
-health_effect = 2
+health_effect = 0
 damage_effect = 0
-poison_effect = 0
+poison_effect = 1
 speed_debuff_ammount = 0.0
 damage_debuff_ammount = 0.0
 paralyze = false
