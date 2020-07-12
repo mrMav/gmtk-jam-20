@@ -1,13 +1,18 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" load_steps=5 format=2]
 
 [ext_resource path="res://spells/data/BuffSpell.gd" type="Script" id=1]
-[ext_resource path="res://scenes/Particles/PoisonParticles.tscn" type="PackedScene" id=2]
+[ext_resource path="res://spritesheet/spellsSheet.png" type="Texture" id=2]
+[ext_resource path="res://scenes/Particles/Buffs/ParalyzeParticles.tscn" type="PackedScene" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 1, 171, 16, 16 )
 
 [resource]
 script = ExtResource( 1 )
 name = "paralyzing debuff"
 description = "description"
-spell_time_out = 1.0
+spell_time_out = 1.5
 interval_of_effects = 0.0
 initiative = 0
 health_effect = 0
@@ -16,4 +21,5 @@ poison_effect = 0
 speed_debuff_ammount = 0.0
 damage_debuff_ammount = 0.0
 paralyze = true
-particles = ExtResource( 2 )
+profile = SubResource( 1 )
+particles = ExtResource( 3 )

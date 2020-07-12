@@ -13,14 +13,13 @@ emission_sphere_radius = 8.0
 flag_disable_z = true
 direction = Vector3( 0, 0, 0 )
 spread = 0.0
-gravity = Vector3( 0, -10, 0 )
+gravity = Vector3( 0, -8, 0 )
 angular_velocity = 40.0
 angular_velocity_random = 0.92
 orbit_velocity = 0.01
 orbit_velocity_random = 1.0
-scale = 3.0
+scale = 1.2
 color_ramp = SubResource( 2 )
-hue_variation = 0.03
 hue_variation_random = 0.85
 
 [node name="poison" type="Particles2D"]
