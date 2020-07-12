@@ -25,17 +25,45 @@ script = ExtResource( 3 )
 [node name="world_map" parent="." instance=ExtResource( 1 )]
 
 [node name="EnemyFollow" parent="." instance=ExtResource( 11 )]
-position = Vector2( 285.411, 332.796 )
+position = Vector2( 736.583, -592.201 )
 player_target = NodePath("../Player")
 
 [node name="EnemyFollow2" parent="." instance=ExtResource( 11 )]
-position = Vector2( 164.411, 352.546 )
+position = Vector2( 1068.66, -783.92 )
+player_target = NodePath("../Player")
+
+[node name="EnemyFollow3" parent="." instance=ExtResource( 11 )]
+position = Vector2( 925.004, -620.418 )
+player_target = NodePath("../Player")
+
+[node name="EnemyFollow4" parent="." instance=ExtResource( 11 )]
+position = Vector2( 916.273, -829.954 )
+player_target = NodePath("../Player")
+
+[node name="EnemyFollow5" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1010.22, -903.685 )
+player_target = NodePath("../Player")
+
+[node name="EnemyFollow6" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1112.49, -530.274 )
+player_target = NodePath("../Player")
+
+[node name="EnemyFollow7" parent="." instance=ExtResource( 11 )]
+position = Vector2( 835.407, -447.03 )
+player_target = NodePath("../Player")
+
+[node name="EnemyFollow8" parent="." instance=ExtResource( 11 )]
+position = Vector2( 621.349, -507.679 )
+player_target = NodePath("../Player")
+
+[node name="EnemyFollow9" parent="." instance=ExtResource( 11 )]
+position = Vector2( 601.133, -832.333 )
 player_target = NodePath("../Player")
 
 [node name="player_ui" parent="." instance=ExtResource( 10 )]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 233.726, 211.683 )
+position = Vector2( 715.102, -754.844 )
 collision_layer = 1
 cursorPath = NodePath("../Cursor")
 spellContainerPath = NodePath("../Spell_Container")
